@@ -9,7 +9,7 @@ Our web app APP NAME is built with features:
 - Learn more about various ancient civilizations and their contributions to the world.
 - Learn about the history of the world and how it has changed over time.
 - View the 3D model of various ancient monuments on the map.
-- View the loaction of various ancient monuments on the map.
+- Learn the loaction of various ancient monuments on the map.
 
 ## ⚙️ How we built it
 
@@ -19,6 +19,8 @@ Our web app APP NAME is built with features:
 - Three Js: Rendering 3D models
 
 ## 🔐 Best Use of Auth0
+
+Because we wanted to create an extremely secure application, we used the Auth0 authentication system for user sign-in. With thorough statistics, a wide range of possible providers, and a selection of user-friendly features the developer will truly like, Auth0 offers the most comprehensive capabilities to assure user authentication and authorization. When developing the app, we used social services like Google, which is enabled by Auth0, to log in.
 
 ## 🧠 Challenges we ran into
 
