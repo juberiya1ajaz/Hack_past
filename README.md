@@ -1,10 +1,13 @@
-# APP NAME
+# TheLostHistory
+Take a sip and deep dive into the monuments and culture that have been lost.
 
 ## 💡 Inspiration
+We all know many cultural and historical sites have been destroyed, flooded, bombed, and whatnot. We never got a good glimpse of them since we could not go in the past. Thanks to technologies out there we are able to tackle this as well and take a deep dive into all the monuments and cultures that have been lost. Here comes our web application **"TheLostHistory"**. On our website, you can take a sneak peek at different ancient heritage from Chinese cities-Xi'an, Meca Verde,  Valley Of The Kings to Mar Saba, Castle Of La Muela, and Histria Fortress.
+On **"TheLostHistory"**, learn about the history of the world and how it has changed over time. To get a better view we have even made 3D models of various ancient monuments on the map.
 
 ## 💻 What it does
 
-Our web app APP NAME is built with features:
+Our web app TheLostHistory is built with features:
 
 - Learn more about various ancient civilizations and their contributions to the world.
 - Learn about the history of the world and how it has changed over time.
@@ -38,7 +41,7 @@ Because we wanted to create an extremely secure application, we used the Auth0 a
 - How to use Django with Frontend.
 - How to use Three Js with Maps.
 
-## 🚀 What's next for APP NAME
+## 🚀 What's next for TheLostHistory
 
 - Building a mobile app.
 - Adding more 3D models.
