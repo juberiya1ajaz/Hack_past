@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Great Pyramid of Giza
+* source:	https://sketchfab.com/3d-models/the-great-pyramid-of-giza-4a251113722f4d969b6cf2ca5f35c502
+* author:	ianicolo (https://sketchfab.com/ianicolo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Great Pyramid of Giza" (https://sketchfab.com/3d-models/the-great-pyramid-of-giza-4a251113722f4d969b6cf2ca5f35c502) by ianicolo (https://sketchfab.com/ianicolo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

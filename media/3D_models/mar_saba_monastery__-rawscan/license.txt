@@ -1,0 +1,11 @@
+Model Information:
+* title:	Mar Saba Monastery  -RAWscan
+* source:	https://sketchfab.com/3d-models/mar-saba-monastery-rawscan-65cd2eee84544eea856c0215dd67bc3d
+* author:	Andrea Spognetta (Spogna) (https://sketchfab.com/spogna)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Mar Saba Monastery  -RAWscan" (https://sketchfab.com/3d-models/mar-saba-monastery-rawscan-65cd2eee84544eea856c0215dd67bc3d) by Andrea Spognetta (Spogna) (https://sketchfab.com/spogna) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Castle of Consuegra (Toledo, Spain)
+* source:	https://sketchfab.com/3d-models/castle-of-consuegra-toledo-spain-dd6b50b630904b569bace37e2bfaa559
+* author:	Global Digital Heritage (https://sketchfab.com/GlobalDigitalHeritage)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Castle of Consuegra (Toledo, Spain)" (https://sketchfab.com/3d-models/castle-of-consuegra-toledo-spain-dd6b50b630904b569bace37e2bfaa559) by Global Digital Heritage (https://sketchfab.com/GlobalDigitalHeritage) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
