@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500&family=Roboto:wght@100;300;400;500&display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="../media/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,290 +24,6 @@
 </head>
 
 <body>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-            text-decoration: none;
-            outline: none;
-            border: none;
-            text-transform: capitalize;
-            transition: all 0.2s linear;
-        }
-
-        html {
-            font-size: 62.5%;
-            overflow-x: hidden;
-        }
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 78px;
-            background: #11101D;
-            padding: 6px 14px;
-            z-index: 99;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar.open {
-            width: 250px;
-        }
-
-        .sidebar .logo-details {
-            height: 60px;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .sidebar .logo-details .icon {
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar .logo-details .logo_name {
-            padding-top: 20px;
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar.open .logo-details .icon,
-        .sidebar.open .logo-details .logo_name {
-            opacity: 1;
-        }
-
-        .sidebar .logo-details #btn {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            font-size: 22px;
-            transition: all 0.4s ease;
-            font-size: 23px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar.open .logo-details #btn {
-            text-align: right;
-        }
-
-        .sidebar i {
-            color: #fff;
-            height: 60px;
-            min-width: 50px;
-            font-size: 28px;
-            text-align: center;
-            line-height: 60px;
-        }
-
-        .sidebar .nav-list {
-            margin-top: 20px;
-            height: 100%;
-        }
-
-        .sidebar li {
-            position: relative;
-            margin: 8px 0;
-            list-style: none;
-        }
-
-        .sidebar li .tooltip {
-            position: absolute;
-            top: -20px;
-            left: calc(100% + 15px);
-            z-index: 3;
-            background: #fff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 15px;
-            font-weight: 400;
-            opacity: 0;
-            white-space: nowrap;
-            pointer-events: none;
-            transition: 0s;
-        }
-
-        .sidebar li:hover .tooltip {
-            opacity: 1;
-            pointer-events: auto;
-            transition: all 0.4s ease;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .sidebar.open li .tooltip {
-            display: none;
-        }
-
-        .sidebar li a {
-            display: flex;
-            height: 100%;
-            width: 100%;
-            border-radius: 12px;
-            align-items: center;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            background: #11101D;
-        }
-
-        .sidebar li a:hover {
-            background: #FFF;
-        }
-
-        .sidebar li a .links_name {
-            color: #fff;
-            font-size: 15px;
-            font-weight: 400;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.4s;
-        }
-
-        .sidebar.open li a .links_name {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .sidebar li a:hover .links_name,
-        .sidebar li a:hover i {
-            transition: all 0.5s ease;
-            color: #11101D;
-        }
-
-        .sidebar li i {
-            height: 50px;
-            line-height: 50px;
-            font-size: 18px;
-            border-radius: 12px;
-        }
-
-        .sidebar li.profile {
-            position: fixed;
-            height: 60px;
-            width: 78px;
-            left: 0;
-            bottom: -8px;
-            padding: 10px 14px;
-            background: #1d1b31;
-            transition: all 0.5s ease;
-            overflow: hidden;
-        }
-
-        .sidebar .profile #log_out {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            background: #1d1b31;
-            width: 100%;
-            height: 60px;
-            line-height: 60px;
-            border-radius: 0px;
-            transition: all 0.5s ease;
-        }
-
-        .sidebar.open .profile #log_out {
-            width: 50px;
-            background: none;
-        }
-
-        .home-section {
-            position: relative;
-            background: #E4E9F7;
-            min-height: 100vh;
-            top: 0;
-            left: 78px;
-            width: calc(100% - 78px);
-            transition: all 0.5s ease;
-            z-index: 2;
-        }
-
-        .sidebar.open~.home-section {
-            left: 250px;
-            width: calc(100% - 250px);
-        }
-
-        .home-section .text {
-            display: inline-block;
-            color: #11101d;
-            font-size: 25px;
-            font-weight: 500;
-            margin: 18px
-        }
-
-        @media (max-width: 420px) {
-            .sidebar li .tooltip {
-                display: none;
-            }
-        }
-
-        .home {
-            position: relative;
-            /* position: absolute; */
-            background: #E4E9F7;
-            min-height: 100vh;
-            top: 0;
-            left: 78px;
-            width: calc(100% - 78px);
-            transition: all 0.5s ease;
-            z-index: 2;
-        }
-
-        .hero_heading {
-            display: grid;
-            place-items: center;
-            font-size: 6rem;
-            padding-top: 25px;
-        }
-
-        .center {
-            display: grid;
-            place-items: center;
-        }
-
-        .hero_heading_underline {
-            background-color: rgb(10, 10, 39);
-            height: 0.5rem;
-            width: 36rem;
-        }
-
-        .about_topic {
-            font-size: 2rem;
-            padding: 15px;
-            text-align: justify;
-        }
-
-        #map {
-            width: 1300px;
-            height: 500px;
-            border-radius: 20px;
-            margin-bottom: 50px;
-        }
-
-        .wallet-connect-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            background-color: #1d1b31;
-            font-size: 2rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
 
     <div class="sidebar">
         <div class="logo-details">
@@ -362,7 +78,10 @@
                 it is considered the oldest urban settlement on Romanian territory. Scymnus of Chios (ca 110 BC), dated
                 its founding to 630 BC, while Eusebius of Caesarea set it during the time of the 33rd Olympic Games (657
                 – 656 BC). The earliest documented currency on today's Romanian territory was an 8-gram silver drachma,
-                issued by the city around 480 BC. This work is based on "Histria Fortress" (https://sketchfab.com/3d-models/histria-fortress-83f041ac73684b50a7e7857eb8069b89) by Popa Cristian Vlad (https://sketchfab.com/popacristianvlad) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</p>
+                issued by the city around 480 BC. This work is based on "Histria Fortress"
+                (https://sketchfab.com/3d-models/histria-fortress-83f041ac73684b50a7e7857eb8069b89) by Popa Cristian
+                Vlad (https://sketchfab.com/popacristianvlad) licensed under CC-BY-4.0
+                (http://creativecommons.org/licenses/by/4.0/)</p>
             <div id="map"></div>
         </div>
 
@@ -386,35 +105,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
-
-    <script>
-        function imgsplit() {
-            $("#splitform").append("<input type = 'file' name = 'myfile' id='myfile'>")
-            $("#mos").val('1');
-            $("#myfile").attr('value', '1')
-
-        }
-        function ammsplit() {
-            $("#splitform").append('<input type="text" placeholder="Amount of bill" name="ammount">')
-            $("#mos").attr('value', '2');
-        }
-        let sidebar = document.querySelector(".sidebar");
-        let closeBtn = document.querySelector("#btn");
-        let searchBtn = document.querySelector(".bx-search");
-
-        closeBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-            menuBtnChange();
-        });
-
-        searchBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-            menuBtnChange();
-        });
-
-        console.log(Cookies.get('csrftoken'));
-
-    </script>
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiaGFyc2hhbC0wOTAyIiwiYSI6ImNreGQ4dHB5aTEzY2IycHBnbXYzZ2pxdXAifQ.Gf9W5Ns9MkS9MQDjk9PB9Q';
@@ -468,7 +158,7 @@
 
                 const loader = new THREE.GLTFLoader();
                 loader.load(
-                    '../media/histria_fortress/scene.gltf',
+                    '../media/3D_models/histria_fortress/scene.gltf',
                     (gltf) => {
                         this.scene.add(gltf.scene);
                     }
@@ -528,6 +218,7 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+    <script src="../media/js/scripts.js"></script>
 
 
 </body>
