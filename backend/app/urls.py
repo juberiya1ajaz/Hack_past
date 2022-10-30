@@ -15,6 +15,7 @@ urlpatterns = [
     path('locations',locations),
     path('chatroom',room),
     path('home',home),
-    path('dashboard',home)
+    path('dashboard',home),
+    path('create', create)
 
 ]

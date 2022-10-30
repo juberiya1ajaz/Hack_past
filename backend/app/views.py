@@ -33,6 +33,9 @@ def blog(request):
 def room(request):
     return render(request, 'room.html')
 
+def create(request):
+    return render(request, 'create.html')
+
 def p7(request):
     return render(request, 'temple_of_eshmun.html')
 

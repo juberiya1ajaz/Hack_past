@@ -1,243 +1,146 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- UIkit CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css"
-    />
+<html lang="en">
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
-    <style>
-      .bfrnav {
-        margin: 0 auto;
-        max-width: 800px;
-        padding: 0 20px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatroom | TheLostHistory</title>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/loactionstyle.css">
+</head>
 
-      .container {
-        border: 2px solid #dedede;
-        background-color: #f1f1f1;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px 0;
-      }
+<body>
+  <style>
+    .card {
+      background-color: rgba(225, 228, 245, 0.559);
 
-      .darker {
-        border-color: #ccc;
-        background-color: #ddd;
-      }
+    }
 
-      .container::after {
-        content: "";
-        clear: both;
-        display: table;
-      }
+    button {
+      background-color: rgb(0, 0, 0);
+    }
 
-      .container img {
-        float: left;
-        max-width: 60px;
-        width: 100%;
-        margin-right: 20px;
-        border-radius: 50%;
-      }
+    button:hover {
+      background-color: rgb(95, 95, 95);
+    }
 
-      .container img.right {
-        float: right;
-        margin-left: 20px;
-        margin-right: 0;
-      }
+    body {
+      background-image: url("../static/img/location.gif");
+      background-size: cover;
+    }
+  </style>
+  <div class="sidebar">
+    <div class="logo-details">
+      <div class="logo_name">TheLostHistory</div>
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="/home">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="/locations">
+          <i class='bx bx-map-alt'></i>
+          <span class="links_name">View Locations</span>
+        </a>
+        <span class="tooltip">View Locations</span>
+      </li>
+      <li>
+        <a href="/chatroom">
+          <i class='bx bxs-conversation'></i>
+          <span class="links_name">Chatroom</span>
+        </a>
+        <span class="tooltip">Chatroom</span>
+      </li>
 
-      .time-right {
-        float: right;
-        color: #aaa;
-      }
+      <li class="profile">
+        <a href="/logout">
+          <i class="bx bx-log-out" id="log_out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="heading" style="color: white;">Chatroom</div>
+  <div class="sub__heading" style="color: white;">Join or create room and chat with others</div>
 
-      .time-left {
-        float: left;
-        color: #999;
-      }
-      nav {
-        margin-bottom: 40px;
-      }
-      .endroom {
-        position: absolute;
-        top: 180px;
-        left: 70vw;
-        background-color: rgba(209, 15, 15, 0.863);
-        color: white;
-        border-radius: 5px;
-        border: none;
-      }
-      .endroom:hover {
-        box-shadow: 0px 0px 30px red;
-      }
-    </style>
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"
-    ></script>
-  </head>
+  <div class="cards-list">
 
-  <body>
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="#">NoDistance</a></li>
-          <li>
-            <a href="/blog">Blogs</a>
-          </li>
-          <li class="uk-active"><a href="/chat">Messages</a></li>
-        </ul>
-      </div>
-      <div class="uk-navbar-right" style="margin-right: 70px">
-        <ul class="uk-navbar-nav">
-          <li>
-            {% if user.is_authenticated %}
-            <a href="#">{{ user.first_name }}</a>
-            {% endif %}
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li><a href="/new-blog">Write a blog</a></li>
-                <li><a href="/myblogs">My Blogs</a></li>
-                <li><a href="/dashboard">Account</a></li>
-                <li><a href="/logout">Logout</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="bfrnav">
-      <h2>{{room}}</h2>
-      {% if user == room_details.author %}
-      <span>
-        <form action="" method="post">
-          {% csrf_token %}
-          <input
-            type="text"
-            value="{{ room_details.id }}"
-            style="display: none"
-            name="roomid"
-          />
-          <button class="endroom" type="submit">End</button>
-        </form>
-      </span>
-      {% endif %}
-      <div id="display">
-        <!-- <div class="container darker">
-  <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
-  <span class="time-left">20th, April 2021</span>
-</div> -->
-      </div>
-
-      <script>
-        $(document).ready(function () {
-          setInterval(function () {
-            $.ajax({
-              type: "GET",
-              url: "/chat/getMessages/{{room}}/",
-              success: function (response) {
-                console.log(response);
-                $("#display").empty();
-                for (var key in response.messages) {
-                  var temp =
-                    "<div class='container darker'><b>" +
-                    response.messages[key].user +
-                    "</b><p>" +
-                    response.messages[key].value +
-                    "</p><span class='time-left'>" +
-                    response.messages[key].date +
-                    "</span></div>";
-                  $("#display").append(temp);
-                }
-              },
-              error: function (response) {
-                alert("An error occured");
-              },
-            });
-          }, 1000);
-        });
-      </script>
-
-      <div class="container">
-        <style>
-          input[type="text"],
-          select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-          }
-
-          input[type="submit"] {
-            width: 100%;
-            background-color: #4caf50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-
-          input[type="submit"]:hover {
-            background-color: #45a049;
-          }
-
-          div {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-          }
-        </style>
-
-        <form id="post-form">
-          {% csrf_token %}
-          <input
-            type="hidden"
-            name="username"
-            id="username"
-            value="{{username}}"
-          />
-          <input
-            type="hidden"
-            name="room_id"
-            id="room_id"
-            value="{{room_details.id}}"
-          />
-          <input type="text" name="message" id="message" width="100px" />
-          <input type="submit" value="Send" />
-        </form>
+    <div class="card" style="height: 17rem;">
+      <!-- <img src="../static/img/Ancient Corinth.jpg" alt="Ancient Corinth"> -->
+      <div class="card__details" style="padding-top: 5rem;">
+        <div class="name">Join a room</div>
+        <!-- <p>900 BC–146 BC</p> -->
+        <a href="/join">
+          <button>Enter room code</button>
+        </a>
       </div>
     </div>
-  </body>
 
-  <script type="text/javascript">
-    $(document).on("submit", "#post-form", function (e) {
-      e.preventDefault();
+    <div class="card" style="height: 17rem;">
+      <!-- <img src="../static/img/Castle Of La Muela.jpg" alt="Castle Of La Muela"> -->
+      <div class="card__details" style="padding-top: 5rem;">
+        <div class="name">Create a room</div>
+        <!-- <p>15th century</p> -->
+        <div id="myBtn">
+          <button>Create Room</button>
+        </div>
 
-      $.ajax({
-        type: "POST",
-        url: "/chat/send",
-        data: {
-          username: $("#username").val(),
-          room_id: $("#room_id").val(),
-          message: $("#message").val(),
-          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-        },
-        success: function (data) {
-          //alert(data)
-        },
-      });
-      document.getElementById("message").value = "";
-    });
+        <div id="myModal" class="modal">
+
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 style="font-size: 1.5rem;">Create a Room</h1>
+            <div class="form">
+              <input type="text" name="room" placeholder="Enter room name" class="room_name" required>
+              <a href="/create"><input type="submit" class="submit_btn" value="Create"></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   </script>
+
+
+  <script src="../static/js/locationscripts.js"></script>
+</body>
+
 </html>
