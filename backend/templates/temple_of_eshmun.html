@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple of Eshmun | TheLostHistory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;500&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">TheLostHistory</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="/home">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="/locations">
+                    <i class='bx bx-map-alt'></i>
+                    <span class="links_name">View Locations</span>
+                </a>
+                <span class="tooltip">View Locations</span>
+            </li>
+            <li>
+                <a href="/chatroom">
+                    <i class='bx bxs-conversation'></i>
+                    <span class="links_name">Chatroom</span>
+                </a>
+                <span class="tooltip">Chatroom</span>
+            </li>
+
+            <li class="profile">
+                <a href="/logout">
+                    <i class="bx bx-log-out" id="log_out"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="home" id="home">
+
+        <h1 class="hero_heading">Temple of Eshmun</h1>
+        <div class="center">
+            <div class="hero_heading_underline"></div>
+            <p class="about_topic">The Temple of Eshmun (Arabic: معبد أشمون) is an ancient place of worship dedicated to
+                Eshmun, the Phoenician god of healing. It is located near the Awali river, 2 kilometres (1.2 mi)
+                northeast of Sidon in southwestern Lebanon. The site was occupied from the 7th century BC to the 8th
+                century AD, suggesting an integrated relationship with the nearby city of Sidon. Although originally
+                constructed by Sidonian king Eshmunazar II in the Achaemenid era (c. 529–333 BC) to celebrate the city's
+                recovered wealth and stature, the temple complex was greatly expanded by Bodashtart, Yatan-milk and
+                later monarchs. Because the continued expansion spanned many centuries of alternating independence and
+                foreign hegemony, the sanctuary features a wealth of different architectural and decorative styles and
+                influences.
+
+            </p>
+            <p class="about_topic">The sanctuary consists of an esplanade and a grand court limited by a huge limestone
+                terrace wall that supports a monumental podium which was once topped by Eshmun's Greco-Persian style
+                marble temple. The sanctuary features a series of ritual ablution basins fed by canals channeling water
+                from the Asclepius river (modern Awali) and from the sacred "YDLL" spring;[nb 1] these installations
+                were used for therapeutic and purificatory purposes that characterize the cult of Eshmun. The sanctuary
+                site has yielded many artifacts of value, especially those inscribed with Phoenician texts, such as the
+                Bodashtart inscriptions and the Eshmun inscription, providing valuable insight into the site's history
+                and that of ancient Sidon. This work is based on "Temple of Eshmun- Detail Area"
+                (https://sketchfab.com/3d-models/temple-of-eshmun-detail-area-3f7d6dfd762a4626978326ff4366aabd) by
+                Miguel Bandera (https://sketchfab.com/miguelbandera) licensed under CC-BY-NC-SA-4.0
+                (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+            </p>
+            <div id="map"></div>
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+
+        AOS.init({
+            delay: 400,
+            duration: 1000
+        })
+
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+    <script>
+        function imgsplit() {
+            $("#splitform").append("<input type = 'file' name = 'myfile' id='myfile'>")
+            $("#mos").val('1');
+            $("#myfile").attr('value', '1')
+
+        }
+        function ammsplit() {
+            $("#splitform").append('<input type="text" placeholder="Amount of bill" name="ammount">')
+            $("#mos").attr('value', '2');
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            menuBtnChange();
+        });
+
+        console.log(Cookies.get('csrftoken'));
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGFyc2hhbC0wOTAyIiwiYSI6ImNreGQ4dHB5aTEzY2IycHBnbXYzZ2pxdXAifQ.Gf9W5Ns9MkS9MQDjk9PB9Q';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/harshal-0902/cl9tyr861003o14o4ce5j3vuk',
+            zoom: 18,
+            center: [35.398056, 33.585556],
+            pitch: 60,
+            antialias: true
+        });
+
+        const modelOrigin = [35.398056, 33.585556];
+        const modelAltitude = 0;
+        const modelRotate = [Math.PI / 2, 0, 0];
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+        const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
+            modelOrigin,
+            modelAltitude
+        );
+
+        const modelTransform = {
+            translateX: modelAsMercatorCoordinate.x,
+            translateY: modelAsMercatorCoordinate.y,
+            translateZ: modelAsMercatorCoordinate.z,
+            rotateX: modelRotate[0],
+            rotateY: modelRotate[1],
+            rotateZ: modelRotate[2],
+            scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
+        };
+
+        const THREE = window.THREE;
+
+        const customLayer = {
+            id: '3d-model',
+            type: 'custom',
+            renderingMode: '3d',
+            onAdd: function (map, gl) {
+                this.camera = new THREE.Camera();
+                this.scene = new THREE.Scene();
+
+                const directionalLight = new THREE.DirectionalLight(0xffffff);
+                directionalLight.position.set(0, -70, 100).normalize();
+                this.scene.add(directionalLight);
+
+                const directionalLight2 = new THREE.DirectionalLight(0xffffff);
+                directionalLight2.position.set(0, 70, 100).normalize();
+                this.scene.add(directionalLight2);
+
+                const loader = new THREE.GLTFLoader();
+                loader.load(
+                    '/static/3D_models/temple_of_eshmun-_detail_area/scene.gltf',
+                    (gltf) => {
+                        this.scene.add(gltf.scene);
+                    }
+                );
+                this.map = map;
+
+                this.renderer = new THREE.WebGLRenderer({
+                    canvas: map.getCanvas(),
+                    context: gl,
+                    antialias: true
+                });
+
+                this.renderer.autoClear = false;
+            },
+            render: function (gl, matrix) {
+                const rotationX = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(1, 0, 0),
+                    modelTransform.rotateX
+                );
+                const rotationY = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 1, 0),
+                    modelTransform.rotateY
+                );
+                const rotationZ = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 0, 1),
+                    modelTransform.rotateZ
+                );
+
+                const m = new THREE.Matrix4().fromArray(matrix);
+                const l = new THREE.Matrix4()
+                    .makeTranslation(
+                        modelTransform.translateX,
+                        modelTransform.translateY,
+                        modelTransform.translateZ
+                    )
+                    .scale(
+                        new THREE.Vector3(
+                            modelTransform.scale,
+                            -modelTransform.scale,
+                            modelTransform.scale
+                        )
+                    )
+                    .multiply(rotationX)
+                    .multiply(rotationY)
+                    .multiply(rotationZ);
+
+                this.camera.projectionMatrix = m.multiply(l);
+                this.renderer.resetState();
+                this.renderer.render(this.scene, this.camera);
+                this.map.triggerRepaint();
+            }
+        };
+
+        map.on('style.load', () => {
+            map.addLayer(customLayer, 'waterway-label');
+        });
+    </script>
+
+
+</body>
+
+</html>
